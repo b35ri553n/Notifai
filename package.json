@@ -1,0 +1,32 @@
+{
+  "name": "notifai",
+  "version": "1.0.0",
+  "description": "notes app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FaryalAjradh/Notifai.git"
+  },
+  "author": "Fariyal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FaryalAjradh/Notifai/issues"
+  },
+  "homepage": "https://github.com/FaryalAjradh/Notifai#readme",
+  "dependencies": {
+    "connect-mongo": "^4.3.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.1",
+    "mongoose": "^5.11.19",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
