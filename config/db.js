@@ -1,5 +1,6 @@
 const mongoose = require('Mongoose')
 
+//mongoose connect returns a promise hence we use async()
 const connectDB = async () => {
     try {
         const conn = await mongoose.connect(process.env.MONGO_URI, {
