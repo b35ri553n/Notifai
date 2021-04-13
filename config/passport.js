@@ -1,2 +1,3 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy
-const mongoose = require('Mongoose')
+const mongoose = require('mongoose')
+const User = required('../models/User')
