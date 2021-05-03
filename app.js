@@ -1,18 +1,21 @@
 const express = require('express')
 const dotenv = require('dotenv')
-const connectDB = require('./config/db')
+// const connectDB = require('./config/db')
 const exphbs = require('express-handlebars')
 const morgan = require('morgan')
 const path = require('path')
 const passport = require('passport')
 const session = require('express-session')
+const mongoose = require('mongoose')
 
 // Load config
 dotenv.config({ path: './config/config.env'})
 
 // Passport config
-require ('./config/passport') (passport)
-connectDB() 
+require ('./config/passport')(passport)
+// connectDB() 
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true,
+    useFindAndModify: false }, () => console.log("MongoDB Connected"))
 
 const app = express()
 
@@ -29,11 +32,11 @@ app.set('view engine', 'hbs');
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
   })
-  )
+)
 
-//Passport middleware
+// Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
 
