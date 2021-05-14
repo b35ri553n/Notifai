@@ -7,6 +7,7 @@ const path = require('path')
 const passport = require('passport')
 const session = require('express-session')
 const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo')(session)
 
 // Load config
 dotenv.config({ path: './config/config.env'})
@@ -18,6 +19,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     useFindAndModify: false }, () => console.log("MongoDB Connected"))
 
 const app = express()
+
+// Body parser
+app.use(express.urlencoded({extended: false}))
+app.use(express.json()) 
 
 // Logging
 if(process.env.NODE_ENV === 'development') {
@@ -33,6 +38,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
+    store: new MongoStore({mongooseConnection: mongoose.connection})
   })
 )
 
@@ -46,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
+app.use('/notes', require('./routes/notes'))
 
 const PORT = process.env.PORT || 3000
 
