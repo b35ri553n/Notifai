@@ -18,7 +18,7 @@ module.exports = {
     stripTags: function (input) {
         return input.replace(/<(?:.|\n)*?>/gm, '')
     },
-   editIcon: function (noteUser, loggedUser, noteId, floating = true) {
+    editIcon: function (noteUser, loggedUser, noteId, floating = true) {
        if (noteUser._id.toString() == loggedUser._id.toString()) {
            if (floating) {
            return `<a href="/notes/edit/${noteId}" class="btn-floating

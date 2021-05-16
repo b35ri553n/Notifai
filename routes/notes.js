@@ -52,11 +52,11 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
 
     }
 
-    if (notes.user != req.user.id) {
+    if (note.user != req.user.id) {
         res.redirect('/notes')
 
     } else {
-        req.render('notes/edit', {
+        res.render('notes/edit', {
             note,
         })
     }

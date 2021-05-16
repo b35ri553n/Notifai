@@ -29,7 +29,7 @@ if(process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
-//Handlebars Helpers
+// Handlebars Helpers
 const { formatDate, stripTags, truncate, editIcon, select } = require('./helpers/hbs')
 
 // Handlebars
