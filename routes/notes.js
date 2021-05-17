@@ -40,6 +40,27 @@ router.get('/', ensureAuth, async (req, res) => {
     }
 })
 
+// @desc   Show single note
+// @route GET /notes/:id
+router.get('/:id', ensureAuth, async (req, res) => {
+    try {
+        let note = await Note.findById(req.params.id)
+        .populate('user')
+        .lean()
+
+        if(!note) {
+            res.render('error/404')
+        }
+
+        res.render('notes/show', {
+            note
+        })
+    } catch (err) {
+        console.error(err)
+        return res.render('error/500')
+    }
+})
+
 // @desc   Show edit page
 // @route  GET /notes/edit/:id
 router.get('/edit/:id', ensureAuth, async (req, res) => {
