@@ -125,4 +125,24 @@ router.delete('/:id', ensureAuth, async (req, res) => {
     }
 })
 
+// @desc   User notes
+// @route GET /notes/user/:userId
+router.get('/user/:userId', ensureAuth, async (req, res) => {
+    try {
+        const notes = await Note.find({
+            user: req.params.userId,
+            status: 'public'
+        })
+        .populate('user')
+        .lean()
+
+        res.render('notes/index', {
+            notes
+        })
+    } catch (err) {
+        console.error(err)
+        return res.render('error/500')
+    }
+})
+
 module.exports = router
