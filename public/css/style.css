@@ -1,9 +1,47 @@
 body {
-    background-color: #ffd4b3;
+    background-color: #eaaeae;
+    color: #012c58;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    color: rgb(79, 2, 2);
 }
 
 p {
     margin: 10px 0 !important;
+}
+
+table {
+    margin-top: 30px;
+    border-radius: 35px;
+    background: #eaaeae;
+    box-shadow:  20px 20px 60px #c79494,
+                -20px -20px 60px #ffc8c8;
+}
+
+nav {
+    background-color: rgb(216, 71, 95) !important;
+}
+
+.card {
+    border-radius: 35px;
+    background: #eaaeae;
+    box-shadow:  20px 20px 60px #c79494,
+                -20px -20px 60px #ffc8c8;
+}
+
+.note-card {
+    height: 300px;
+    text-align: center;
+}
+
+.first-col {
+    padding-left: 40px;
+}
+
+#last-col {
+    padding-right: 20px;
 }
 
 .login-container {
@@ -24,4 +62,17 @@ p {
 
 .img-small {
     width: 180px;
-  }
+}
+
+.btn {
+    background-color: #7fb96a;
+}
+
+.btn:hover {
+    background-color: #507542;
+}
+
+.read-more {
+    border-radius: 50px;
+    margin-top: 10px;
+}

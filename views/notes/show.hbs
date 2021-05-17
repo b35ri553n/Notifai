@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col s12 m8">
-        <h3>{{note.title}}
+        <h3 style="margin-bottom:50px">{{note.title}}
             <small>{{{editIcon note.user user note._id false}}}</small>
         </h3>
         <div class="card story">
@@ -10,13 +10,13 @@
             </div>
         </div>
     </div>
-    <div class="col s12 m4">
+    <div class="col s12 m4" style="margin-top:125px">
         <div class="card center-align">
             <div class="card-content">
                 <span class="card-title">{{note.user.displayName}}</span>
                 <img src="{{note.user.image}}" class="circle responsive-img img-small">
             </div>
-            <div class="card-action">
+            <div style="padding: 15px">
                 <a href="/notes/user/{{note.user._id}}">More From {{note.user.firstName}}</a>
             </div>
         </div>

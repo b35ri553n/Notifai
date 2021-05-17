@@ -1,24 +1,30 @@
-<h1>Notes</h1>
-<div class = "row">
+<h1><img src="https://img.icons8.com/color/60/000000/copybook.png" style="margin-bottom: -5px"/></span>Notes</h1>
+<div class = "row" style="margin-top: 15px">
     {{#each notes}}
     <div class = "col s12 m4">
-        <div class = "card">
+        <div class = "card note-card">
             <div class = "card-image">
                 {{{editIcon user ../user _id}}}
             </div>
             <div class = "card-content center-align">
-                <h5>{{title}}</h5>
-                <p>{{stripTags (truncate body 150)}}</p>
-                <br>
-                <div class = "chip">
-                    <img src ="{{user.image}}" alt="">
-                    <a href="/notes/user/{{user._id}}">{{user.displayName}}
-                    </a>
+                <div class="container">
+                    <h5>{{title}}</h5>
+                    <p>{{stripTags (truncate body 150)}}</p>
+                    <br>
+                </div>
+                <div class ="container">
+                    <div class = "chip">
+                        <img src ="{{user.image}}" alt="">
+                        <a href="/notes/user/{{user._id}}">{{user.displayName}}
+                        </a>
+                    </div>
+                    <br>
+                    <a href="/notes/{{_id}}" class="center-align btn read-more">Read More</a>
                 </div>
             </div>
-           <div class = "card-action center-align">
-               <a href="/notes/{{_id}}" class="btn grey">Read More</a>
-           </div>
+           {{!-- <div class = "card-action center-align"> --}}
+               
+           {{!-- </div> --}}
         </div>
     </div>
     {{else}}
