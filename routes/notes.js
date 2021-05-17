@@ -23,7 +23,7 @@ router.post('/', ensureAuth, async (req, res) => {
 })
 
 // @desc   Show all notes
-// @route GET /notes
+// @route  GET /notes
 router.get('/', ensureAuth, async (req, res) => {
     try {
         const notes = await Note.find({ status: 'public'})
@@ -41,24 +41,66 @@ router.get('/', ensureAuth, async (req, res) => {
 })
 
 // @desc   Show edit page
-// @route GET /notes/edit/:id
+// @route  GET /notes/edit/:id
 router.get('/edit/:id', ensureAuth, async (req, res) => {
-    const note = await Note.findOne({
-        _id: req.params.id
-    }).lean()
-
-    if (!note) {
-        return res.render('error/404')
-
+    try {
+        const note = await Note.findOne({
+            _id: req.params.id
+        }).lean()
+    
+        if (!note) {
+            return res.render('error/404')
+    
+        }
+    
+        if (note.user != req.user.id) {
+            res.redirect('/notes')
+    
+        } else {
+            res.render('notes/edit', {
+                note,
+            })
+        }
+    } catch (err) {
+        console.error(err)
+        return res.render('error/500')  
     }
+})
 
-    if (note.user != req.user.id) {
-        res.redirect('/notes')
+// @desc   Update note
+// @route  PUT /notes/:id
+router.put('/:id', ensureAuth, async (req, res) => {
+    try {
+        let note = await Note.findById(req.params.id).lean()
 
-    } else {
-        res.render('notes/edit', {
-            note,
-        })
+        if(!note) {
+            return res.render('error/404')
+        }
+        if (note.user != req.user.id) {
+            res.redirect('/notes')
+
+        } else {
+            note = await Note.findOneAndUpdate({_id: req.params.id}, req.body, {
+                new: true,
+                runValidators: true
+            })
+            res.redirect('/dashboard')
+        }
+    } catch (err) {
+        console.error(err)
+        return res.render('error/500')
+    }
+})
+
+// @desc   Delete note
+// @route  DLEETE /notes/:id
+router.delete('/:id', ensureAuth, async (req, res) => {
+    try {
+        await Note.remove({_id: req.params.id})
+        res.redirect('/dashboard')
+    } catch (err) {
+        console.error(err)
+        return res.render('error/500')
     }
 })
 
