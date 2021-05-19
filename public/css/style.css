@@ -1,11 +1,12 @@
 body {
-    background-color: #eaaeae;
+    background-color: #b3b5ff;
     color: #012c58;
     font-family: 'Montserrat', sans-serif;
+
 }
 
 a {
-    color: rgb(79, 2, 2);
+    color: #00154F;
 }
 
 p {
@@ -15,20 +16,20 @@ p {
 table {
     margin-top: 30px;
     border-radius: 35px;
-    background: #eaaeae;
-    box-shadow:  20px 20px 60px #c79494,
-                -20px -20px 60px #ffc8c8;
+    background: #9a9cff;
+    box-shadow:  20px 20px 60px #c7caff,
+                -20px -20px 60px #9396d9;
 }
 
 nav {
-    background-color: rgb(216, 71, 95) !important;
+    background-color: #00154F !important;
 }
 
 .card {
     border-radius: 35px;
-    background: #eaaeae;
-    box-shadow:  20px 20px 60px #c79494,
-                -20px -20px 60px #ffc8c8;
+    background: #9a9cff;
+    box-shadow:  20px 20px 60px #c7caff,
+                -20px -20px 60px #9396d9;
 }
 
 .note-card {
